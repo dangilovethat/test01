@@ -1,6 +1,6 @@
 <?php
 
-echo 'hello -01<br>';
+echo 'hello from Azure1<br>';
 
 require_once'config.php';
 
@@ -15,7 +15,8 @@ echo 'mid-01 <br>';
 $oConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-
+print_r(PDO::getAvailableDrivers());
+echo '<br>';
 $sql = "SELECT * FROM hello_world";
 
 $q   = $oConn->query($sql) or die("failed!");
@@ -23,6 +24,9 @@ $q   = $oConn->query($sql) or die("failed!");
 while($r = $q->fetch(PDO::FETCH_ASSOC)){
 
   echo $r['data'];
+
+# close the connection
+$oConn = null;
 
 }
 
